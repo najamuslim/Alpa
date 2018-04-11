@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 public class AddTask extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addtask;
-    String List[]={"item 1","item 2",};
+    private ArrayList<String> nametask = new ArrayList<>();
+    private ArrayList<String> taskdate = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new Adapter(this, List));
+        recyclerView.setAdapter(new Adapter(this, nametask, taskdate));
         addtask=(FloatingActionButton)findViewById(R.id.floatingActionButton);
         addtask.setOnClickListener(new View.OnClickListener() {
             @Override
